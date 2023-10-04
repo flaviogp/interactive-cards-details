@@ -1,0 +1,100 @@
+@media screen and (max-width: 301px) {
+    .app {
+        .form {
+            p {
+                font-size: .6rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 363px) {
+    .app {
+        .form {
+            p {
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    .app {
+        min-width: 350px;
+    }
+}
+
+
+@media screen and (min-width: 420px) {
+
+    //card-back
+    .app {
+        .card-section {
+            .card-container {
+                .card-back {
+                    margin-bottom: -70px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 465px) {
+    .card-number {
+        font-size: 1.2rem !important;
+    }
+}
+@media screen and (min-width: 465px) and (max-width: 1000px){
+    .card-number {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .app{
+        flex-direction: row !important;
+        align-items: center;
+        .form-section, .tanks-section{
+            width: 60%;
+            align-items: center;
+        }  
+        .card-section {
+            width: 40%;
+            height: 100%;
+            justify-content: end;
+            align-items: center;
+            padding: 0;
+
+            .cards-container {
+                flex-direction: column;
+                min-height: 100%;
+                gap: 30px;
+                margin-right: -100px;
+                justify-content: center;
+                margin-bottom: 0;
+
+                .card-front {
+                    .card-info {
+                        .card-number {
+                            font-size: 1.2rem;
+                        }
+                    }
+                }
+                .card-back{
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+
+  
+}
+
+
+@media screen and (min-width: 1440px) {
+    .app {
+        max-width: 1440px;
+    }
+}

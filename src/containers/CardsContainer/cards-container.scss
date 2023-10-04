@@ -1,0 +1,84 @@
+.cards-container{
+    width: 80%;
+    max-width: 350px;
+    min-width: 300px;
+    height: 250px; 
+    margin-bottom: -80px;
+    display: flex;
+    flex-direction: column-reverse;
+    color: white;
+    
+    .card-front{
+        background-image: url(../assets/images/bg-card-front.png);
+        width: 85%;
+        min-width: 300px;
+        height: 70%;
+        max-height: 170px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+        align-self: start;
+        position: relative;
+
+        .card-brand{
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            
+            div:first-child{
+                width: 35px;
+                height: 35px;
+                background-color: #fff;
+                border-radius: 50%;
+                margin-right: 10px;
+            }
+            div:last-child{
+                width: 15px;
+                height: 15px;
+                border: 1px solid #fff;
+                border-radius: 50%;
+            }
+        }
+        
+        .card-info{
+            padding: 20px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+            text-transform: capitalize;
+            .card-number{
+                width: 100%;
+                font-size: 1.5rem;
+            }
+            
+        }
+        
+
+    }
+    .card-back{
+        background-image: url(../assets/images/bg-card-back.png);
+        width: 85%;
+        height: 70%;
+        max-height: 170px;
+        min-width: 300px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin-bottom: -70px;
+        align-self: end;
+        position: relative;
+        .cvc{
+            position: absolute;
+            top: 43%;
+            right: 15%
+        }
+
+    }
+}

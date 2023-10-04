@@ -1,0 +1,117 @@
+.form-section{
+    display: flex;
+    justify-content: center;
+    // padding-top: 70px;
+
+    .form-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .error{
+            color: $red;
+            padding: 5px 0;
+            width: 100%;
+            text-align: left;
+            font-size: .8rem;
+        }
+    }
+    
+    
+    .form{
+        width: 90%;
+        max-width: 400px;
+        max-height: 400px;
+        gap: 20px;
+        padding: 20px;
+        display: grid;
+        grid-template-rows: repeat(auto, 1fr);
+        grid-template-columns: repeat(2, 50%);
+        grid-template-areas: 
+            'card-name card-name' 
+            'card-number card-number' 
+            'card-date card-cvc' 
+            'form-button form-button';
+
+        p{
+            color: $very-dark-violet;
+
+        }
+
+
+        label{
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            input{
+                max-width: 100%;
+            }
+        }
+
+
+        label[for=name]{
+            grid-area: card-name;
+        }
+        label[for=number]{
+            grid-area: card-number;
+        }
+        label[for=date]{
+            grid-area: card-date;
+            display: flex;
+            flex-direction: column;
+            div {
+                display: flex;
+                input{
+                    width: 50%;
+                    &:not(:last-child){
+                        margin-right: 10px;
+                    }
+                }
+            }
+
+        }
+        label[for=cvc]{
+            grid-area: card-cvc;
+
+        }
+
+        input{
+            padding: 10px;
+            border: 1px solid $dark-grayish-violet;
+            border-radius: 5px;
+            margin-top: 10px;
+
+            &:focus{
+                outline: 1px solid $very-dark-violet;
+            }
+            
+            &.input-error{
+                outline: 1px solid $red;
+            }
+        }
+
+        #cardhold-name, #card-number{
+            width: 100%;
+
+        }
+
+        button{
+            grid-area: form-button;
+
+            padding: 15px;
+            text-align: center;
+            text-transform: capitalize;
+            font-weight: bold;
+            color: #fff;
+            background-color: $very-dark-violet;
+            border: none;
+            border-radius: 10px;
+
+            &:hover{
+                cursor:pointer
+            }
+        }
+
+    }
+}
+
