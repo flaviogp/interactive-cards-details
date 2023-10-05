@@ -1,6 +1,6 @@
 export interface FormData{
-    cardName: string;
-    cardNumber: string;
+    cardname: string;
+    cardnumber: string;
     expDate: {
         month: string;
         year: string;
@@ -11,15 +11,14 @@ export interface FormProps{
     setFormData: (arg: FormData) => void;
     formData: FormData;
     setSendForm: (arg: boolean) => void;
+    sendForm?: boolean
 }
 export interface CardProps{
     formData: FormData;
 }
 
-// export interface IErrors{
-//     cardnameError: string;
-//     cardNumberError: string;
-//     expDateMonthError: string;
-//     expDateYearError: string;
-//     cvcError: string;
-// }
+
+export interface ErrorMessages {
+    type: string,
+    errorMessage: string
+}

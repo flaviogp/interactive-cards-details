@@ -1,6 +1,8 @@
 import { ChangeEvent, FormEvent } from "react";
 import { FormProps } from "../../interfaces";
 import {useValidForm} from '../../hooks/useValidForm'
+import Input from "../Input";
+import Button from "../Button";
 
 export default function Form ({ setFormData, formData, setSendForm }: FormProps) {
     const { errorsMessage, 
@@ -27,8 +29,8 @@ export default function Form ({ setFormData, formData, setSendForm }: FormProps)
         return setFormData({...formData, expDate: {...formData.expDate, [key]: value}})
     }
     const preventSubmitVoidForm = (): boolean =>{
-        if(formData.cardName.length === 0 ||
-            formData.cardNumber.length === 0 ||
+        if(formData.cardname.length === 0 ||
+            formData.cardnumber.length === 0 ||
             formData.expDate.month.length === 0 ||
             formData.expDate.year.length === 0 ||
             formData.cvc.length === 0) return false;
@@ -40,12 +42,130 @@ export default function Form ({ setFormData, formData, setSendForm }: FormProps)
         if(errorsMessage.length !== 0) return;
         if(!preventSubmitVoidForm()) return;
         setSendForm(true);
-        console.log("enviado")
+        console.log(formData)
     }
+
     return(
         <div className="form-container">
             <form className="form" onSubmit={e => handleSubmit(e)}>
-                <label htmlFor="name">
+
+            <label htmlFor="name">
+                <p>CARDHOLDER NAME</p>
+                <Input
+                    id='cardname'
+                    placeholder="e.g. Jane Appleseed"
+                    name="name"
+                    errorsMessage={errorsMessage}
+                    checkEmptyField={checkEmptyField}
+                    checkFieldLength={checkFieldLength}
+                    minFieldLength={3}
+                    handleChange={handleChange}
+                />
+                
+                {
+                    errorsMessage.find(err => err.type === 'cardname') && 
+                        <p className="error">{errorsMessage.find(err => err.type === 'cardname')?.errorMessage}</p>
+                }
+            </label>
+
+
+            <label htmlFor="number">
+                <p>CARD NUMBER</p>
+                <Input
+                    id='cardnumber'
+                    placeholder="e.g. 1234 5678 9123 0000"
+                    name='number'
+                    errorsMessage={errorsMessage}
+                    // handleChange,
+                    checkEmptyField={checkEmptyField}
+                    checkFieldLength={checkFieldLength}
+                    formatInputTextToNumber={formatInputTextToNumber}
+                    minFieldLength={16}
+                    maxFieldLength={16}
+                    handleChange={handleChange}
+                />
+
+                {
+                    errorsMessage.find(err => err.type === 'cardnumber') && 
+                        <p className="error">{errorsMessage.find(err => err.type === 'cardnumber')?.errorMessage}</p>
+                }
+            </label>
+
+            <label htmlFor="date">
+                <p>EXP. DATE (MM/YY)</p>
+                <div>
+                    <Input
+                        id='month'
+                        placeholder="MM"
+                        name="date"
+                        errorsMessage={errorsMessage}
+                        // handleChange,
+                        checkEmptyField={checkEmptyField}
+                        checkFieldLength={checkFieldLength}
+                        formatInputTextToNumber={formatInputTextToNumber}
+                        minFieldLength={2}
+                        maxFieldLength={2}
+                        checkValidMonthDate={checkValidMonthDate}
+                        handleChange={handleChange}
+                        />
+                    <Input
+                        id='year'
+                        placeholder="YY"
+                        name="date"
+                        errorsMessage={errorsMessage}
+                        // handleChange,
+                        checkEmptyField={checkEmptyField}
+                        checkFieldLength={checkFieldLength}
+                        formatInputTextToNumber={formatInputTextToNumber}
+                        minFieldLength={2}
+                        maxFieldLength={2}
+                        checkValidYearDate={checkValidYearDate}
+                        handleChange={handleChange}
+                        />
+                </div>
+                         
+                {
+                    errorsMessage.find(err => err.type === 'month') && 
+                        <p className="error">{errorsMessage.find(err => err.type === 'month')?.errorMessage}</p>
+                    ||
+                    errorsMessage.find(err => err.type === 'year') && 
+                        <p className="error">{errorsMessage.find(err => err.type === 'year')?.errorMessage}</p>
+                }
+
+            </label>
+
+
+            <label htmlFor="cvc">
+                <p>CVC</p>
+
+                <Input
+                    id='cvc'
+                    placeholder="123"
+                    name='cvc'
+                    errorsMessage={errorsMessage}
+                    // handleChange,
+                    checkEmptyField={checkEmptyField}
+                    checkFieldLength={checkFieldLength}
+                    formatInputTextToNumber={formatInputTextToNumber}
+                    minFieldLength={3}
+                    maxFieldLength={3}
+                    handleChange={handleChange}
+                />
+
+                {
+                    errorsMessage.find(err => err.type === 'cvc') && 
+                        <p className="error">{errorsMessage.find(err => err.type === 'cvc')?.errorMessage}</p>
+                }
+
+            </label>
+            <Button text='Confirm' />
+            </form>
+        </div>
+    )
+}
+
+
+                {/* <label htmlFor="name">
                     <p>CARDHOLDER NAME</p>
                     <input 
                         type="text" 
@@ -128,10 +248,6 @@ export default function Form ({ setFormData, formData, setSendForm }: FormProps)
                         errorsMessage.find(err => err.type === 'month') && 
                         <p className="error">{errorsMessage.find(err => err.type === 'month')?.errorMessage}</p>
                     }
-                    {/* {
-                        errorsMessage.find(err => err.type === 'month') && 
-                            <p className="error">{errorsMessage.find(err => err.type === 'month')?.errorMessage}</p>
-                    } */}
                 </label>
                 <label htmlFor="cvc">
                     <p>CVC</p>
@@ -154,12 +270,4 @@ export default function Form ({ setFormData, formData, setSendForm }: FormProps)
                         errorsMessage.find(err => err.type === 'cvc') && 
                             <p className="error">{errorsMessage.find(err => err.type === 'cvc')?.errorMessage}</p>
                     }
-                </label>
-
-                <button>
-                    confirm
-                </button>
-            </form>
-        </div>
-    )
-}
+                </label> */}

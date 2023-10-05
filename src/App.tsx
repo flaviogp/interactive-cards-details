@@ -2,13 +2,12 @@ import { useState } from 'react'
 import CardSection from "./containers/CardSection"
 import FormSection from "./containers/FormSection"
 import { FormData } from "./interfaces"
-import TanksSection from './containers/TanksSection'
 
 function App() {
-  const [sendForm, setSendForm] = useState(true)
+  const [sendForm, setSendForm] = useState(false)
   const [formData, setFormData] = useState<FormData>({
-    cardName: '',
-    cardNumber: '',
+    cardname: '',
+    cardnumber: '',
     expDate: {
         month: '',
         year: ''
@@ -18,13 +17,7 @@ function App() {
   return (
     <div className="app">
       <CardSection formData={formData}/>
-      { 
-        !sendForm ? 
-          <FormSection setFormData={setFormData} formData={formData} setSendForm={setSendForm}/>
-        :
-          <TanksSection />
-        
-        }
+      <FormSection setFormData={setFormData} formData={formData} setSendForm={setSendForm} sendForm={sendForm}/>
     </div>
   )
 }

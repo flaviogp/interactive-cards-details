@@ -1,11 +1,6 @@
 import { useState } from "react"
+import { ErrorMessages } from "../interfaces"
 
-
-
-type ErrorMessages = {
-    type: string,
-    errorMessage: string
-}
 
 export const useValidForm = () => {
 
@@ -14,7 +9,6 @@ export const useValidForm = () => {
 
     const clearErrors = (id: string) => {
         const error = errorsMessage.filter(err => err.type === id)
-        console.log(error)
         if(error.length > 0){
             const errors = [...errorsMessage]
             for(const err of error){

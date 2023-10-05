@@ -1,13 +1,14 @@
 import IComplete from '../../assets/images/icon-complete.svg'
+import Button from '../Button'
 
-export default function TanksSection() {
+export default function Thanks() {
   return (
-    <div className="tanks-section">
+    <div className="tanks">
         <img src={IComplete} alt="icon complete" />
-        <h1>Tank You!</h1>
+        <h1>Thank You!</h1>
         <p>we've added your card details</p>
 
-        <button>Continue</button>
+        <Button text='Continue' />
     </div>
   )
 }
